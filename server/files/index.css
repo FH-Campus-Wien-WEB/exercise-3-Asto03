@@ -1,77 +1,156 @@
 @import url(base.css);
-
-h1 {
-  font-size: 200%;
-  margin: 8px 0px;
+@media (min-width: 625px){
+  body{
+    display: grid;
+    grid-template-areas: "header header" "nav main" "footer footer";
+    grid-template-columns: minmax(192px, 256px) auto;
+    grid-template-rows: minmax(64px, 128px) auto minmax(64px, 128px);
+    gap: 3px;
+    padding: 5px;
+  }
+}
+@media (max-width: 624px){
+  body{
+    display: grid;
+    grid-template-areas: "header" "nav" "main" "footer";
+    grid-template-rows: auto auto auto auto;
+    gap: 3px;
+    padding: 5px;
+  }
 }
 
-/* Constrain the page to the viewport */
-html, body {
-  height: 100vh;
+header{
+  grid-area: header;
 }
-
-/* Center the nav's header and list */
-nav {
+footer{
+  grid-area: footer;
+}
+main{
+  grid-area: main;
+  overflow-y: auto;
+  margin: 0;                      /* distance between outside the border (Container) */
+  padding: 2.5rem 0.2rem;        /* distance between Elements and border */
+  display: flex;                  /* enables flex options */
+  flex-direction: row;            /* How Cards are positioned */
+  flex-wrap: wrap;                /* "Line breaks" vorher center*/
+  justify-content: center;        /* Positions cards in the center*/
+  gap: 20px;                      /* Gaps between cards */
+}
+nav>ul{
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem
+}
+nav{
+  grid-area: nav;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-/* navigation buttons have full width */
-nav button {
-  width: 100%;
-}
-
-/* Remove unnecessary space and bullets from the lists */
 ul {
   padding: 0px;
   margin: 16px;
   list-style-type: none;
 }
+article{
+  background-color: #1f1f1f;
+  width: 300px;                   /* Card width */
+  border-radius: 12px;            /* Round corners */
+  overflow: hidden;               /* Everything that is to big for the card gets choped off */
+  margin: 10px;
+  text-align: center;
+  padding-bottom: 20px;
+  transition: all 0.2s ease;       /* hover effect */
 
-/* Task 2.1. Lay out the childs of the 'body' using Grid Template Areas. */
-
-
-/* Task 3.1. Make the header element a flex container and center its children
-   vertically and horizontally.
- */
-
-
-/* Task 3.2. Make the list items of the unordered list in the nav element a flex container, 
-   use column direction and center the child items
- */
-
-/* Task 3.3. Make the main element a Flexbox container */
-
-
-/* Task 3.4. Make the footer's ul a Flexbox container */
-
-
-/* From here on styling from exercise 1 */
-img {
-  border-radius: 12px;
 }
-
-article {
-  background-color: lightgray;
-  border-radius: 16px;
-  padding: 16px;
-  width: 384px;
-  margin: 8px;
+article:hover{
+  transform: translateY(-5px);      /* by how many pixels the cards move when hovering over them */
+  box-shadow: 0 15px 40px black;    /* 0 -> X-axis, 15 -> Y-axis, 40 -> blur radius */
 }
-
-a {
-  color: beige;
+img{
+  max-width: 100%;                   /* max-width prevents overflow */
+  height: 450px;
+  object-fit: cover;
+  border-bottom: 3px solid red;      /* red line under img */
 }
-
-span {
-  margin-right: 4px;
+article>h1 {
+  font-size: 1.5rem;
+  margin: 1rem;
 }
-
-.genre {
-  padding: 4px 8px;
-  border: solid black 1px;
-  border-radius: 6px;
-  background-color: darkgray;
+article>h2 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  border-bottom: 2px solid #808080;
+  color: grey;
+  padding: 0.5rem;
+}
+article>p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0.5rem 1rem;
+  color: #d3d3d3;
+}
+.genres{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
+}
+.genre{
+  background-color: #800000;
+  color: #d3d3d3;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
+  transition: all 0.2s ease;          /* how long until hover appears and leaves */
+  cursor: default;
+}
+.actors{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+.writers{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+.directors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+.genre:hover {
+  background-color: #700000;
+  border-color: #700000;
+}
+.plot{
+  border-left: 1px solid yellow;
+  padding: 10px;
+  font-style: italic;
+}
+.edit {
+  background-color: #800000;
+  color: #d3d3d3;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.2s ease;          /* how long until hover appears and leaves */
+  cursor: default;
+}
+.edit:hover {
+  background-color: #700000;
+  border-color: #700000;
 }
