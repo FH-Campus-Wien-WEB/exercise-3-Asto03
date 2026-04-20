@@ -73,7 +73,7 @@ img{
   max-width: 100%;                   /* max-width prevents overflow */
   height: 450px;
   object-fit: cover;
-  border-bottom: 3px solid red;      /* red line under img */
+  border-bottom: 3px solid red;
 }
 article>h1 {
   font-size: 1.5rem;
