@@ -23,7 +23,7 @@
     text-decoration: none;
     color: white;
     border-radius: 5px;
-  }
+
   nav>ul{
     grid-area: nav;
     display: flex;
