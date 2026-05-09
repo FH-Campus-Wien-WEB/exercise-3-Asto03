@@ -25,7 +25,7 @@ app.get('/genres', function (req, res) {
       genres.add(genre);
     })
   })
-  res.send(Array.from(genres));                   //transform it back
+  res.send(Array.from(genres).sort());                   //transform it back
 })
 
 /* Task 1.4: Extend the GET /movies endpoint:

@@ -1,29 +1,106 @@
 @import url(base.css);
+  body{
+    display: grid;
+    grid-template-areas: "header" "nav" "main" "footer";
+    grid-template-rows: auto auto 1fr auto;
+    gap: 3px;
+    padding: 5px;
+    height: 100vh;
+    overflow: hidden;
+  }
+  nav{
+    grid-area: nav;
+    display: flex;
+    justify-content: center;
+    background-color: #1f1f1f;
+    border-radius: 12px;
+  }
+  nav button{
+    width:40%;
+    display: block;
+    text-align: center;
+    background-color: #700000;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+  }
+  nav>ul{
+    grid-area: nav;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 8px;
+    padding: 0;
+  }
+  ul {
+    padding: 0;
+    margin: 16px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav > ul > li {
+    flex: 1;
+    text-align: center;
+  }
 @media (min-width: 625px){
   body{
     display: grid;
     grid-template-areas: "header header" "nav main" "footer footer";
     grid-template-columns: minmax(192px, 256px) auto;
-    grid-template-rows: minmax(64px, 128px) auto minmax(64px, 128px);
+    grid-template-rows: minmax(64px, 128px) 1fr minmax(64px, 128px);
     gap: 3px;
     padding: 5px;
+    height: 100vh;        /*viewport height*/
+    box-sizing: border-box;
+  }
+  nav>ul{
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  nav{
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    padding: 0.75rem;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  nav button {
+    display: block;
+    width: 160px;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #700000;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
   }
 }
-@media (max-width: 624px){
-  body{
-    display: grid;
-    grid-template-areas: "header" "nav" "main" "footer";
-    grid-template-rows: auto auto auto auto;
-    gap: 3px;
-    padding: 5px;
-  }
-}
-
 header{
   grid-area: header;
+
+}
+header h1{
+  font-size: 2rem;
 }
 footer{
   grid-area: footer;
+}
+footer > p{
+  font-size: 0.8rem;
 }
 main{
   grid-area: main;
@@ -36,24 +113,6 @@ main{
   justify-content: center;        /* Positions cards in the center*/
   gap: 20px;                      /* Gaps between cards */
 }
-nav>ul{
-  grid-area: nav;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem
-}
-nav{
-  grid-area: nav;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-ul {
-  padding: 0px;
-  margin: 16px;
-  list-style-type: none;
-}
 article{
   background-color: #1f1f1f;
   width: 300px;                   /* Card width */
@@ -63,8 +122,8 @@ article{
   text-align: center;
   padding-bottom: 20px;
   transition: all 0.2s ease;       /* hover effect */
-
 }
+
 article:hover{
   transform: translateY(-5px);      /* by how many pixels the cards move when hovering over them */
   box-shadow: 0 15px 40px black;    /* 0 -> X-axis, 15 -> Y-axis, 40 -> blur radius */
